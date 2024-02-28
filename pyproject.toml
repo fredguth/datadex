@@ -28,10 +28,10 @@ readme = "README.md"
 license = { text = "MIT" }
 
 [project.urls]
-Homepage = "https://davidgasquez.github.io/datadex/"
-Changelog = "https://github.com/davidgasquez/datadex/commits/main/"
-Issues = "https://github.com/davidgasquez/datadex/issues"
-CI = "https://github.com/davidgasquez/datadex/actions"
+Homepage = "https://fredguth.github.io/datadex/"
+Changelog = "https://github.com/fredguth/datadex/commits/main/"
+Issues = "https://github.com/fredguth/datadex/issues"
+CI = "https://github.com/fredguth/datadex/actions"
 
 [project.optional-dependencies]
 dev = ["dagit", "shandy-sqlfmt[jinjafmt]", "ruff"]

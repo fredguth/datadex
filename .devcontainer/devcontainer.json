@@ -16,11 +16,11 @@
                     "editor.formatOnSave": true
                 },
                 "[python]": {
-                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.defaultFormatter": "GitHub.copilot",
                     "editor.formatOnSave": true,
                     "editor.codeActionsOnSave": {
-                        "source.fixAll": true,
-                        "source.organizeImports": true
+                        "source.fixAll": "always",
+                        "source.organizeImports": "always"
                     }
                 },
                 "notebook.formatOnSave.enabled": true,
