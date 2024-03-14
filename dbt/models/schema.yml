@@ -1,0 +1,9 @@
+version: 2
+
+vars:
+  uf_list: ['DF', 'MG', 'RJ']
+
+models:
+  - name: PROD_UF
+
+      

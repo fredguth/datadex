@@ -9,7 +9,7 @@ data_assets_job = define_asset_job(
     selection=AssetSelection.groups("default"),
 )
 
-hf_assets_job = define_asset_job(
-    name="hf_assets_job",
-    selection=AssetSelection.groups("hf"),
-)
+# hf_assets_job = define_asset_job(
+#     name="hf_assets_job",
+#     selection=AssetSelection.groups("hf"),
+# )

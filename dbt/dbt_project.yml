@@ -9,3 +9,8 @@ target-path: target
 models:
   datadex:
     +materialized: table
+
+vars:
+  'dbt_date:time_zone': 'America/Sao_Paulo'
+
+require-dbt-version: [">=1.7.0", "<2.0.0"]

@@ -17,9 +17,8 @@ format:
 
 website:
   title: Datadex
-  repo-url: https://github.com/davidgasquez/datadex
+  repo-url: https://github.com/fredguth/datadex
   repo-actions: [edit, issue]
-  page-footer: Made with ❤️ by David Gasquez
   navbar:
     search: true
     logo: https://em-content.zobj.net/thumbs/120/google/350/package_1f4e6.png
@@ -38,10 +37,10 @@ website:
       #   href: reports
     tools:
       - icon: twitter
-        href: https://twitter.com/davidgasquez
+        href: https://twitter.com/fredguth
       - icon: github
         menu:
           - text: Source Code
-            url: https://github.com/davidgasquez/datadex
+            url: https://github.com/fredguth/datadex
           - text: Create an Issue
-            url: https://github.com/davidgasquez/datadex/issues/new
+            url: https://github.com/fredguth/datadex/issues/new

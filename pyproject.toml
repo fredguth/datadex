@@ -1,17 +1,16 @@
 [project]
-name = "datadex"
-version = "1.0.0"
-authors = [{ name = "David Gasquez" }]
+name = "playground"
+version = "0.0.1"
+authors = [{ name = "Frederico Guth" }]
 dependencies = [
-    "altair",
     "dagster-dbt",
     "dagster-duckdb-pandas",
+    "dagster-duckdb",
     "dagster",
     "dbt-core",
     "dbt-duckdb",
     "duckdb",
-    "huggingface_hub",
-    "datasets",
+    "fsspec",
     "frictionless",
     "ipykernel",
     "ipywidgets",
@@ -21,6 +20,8 @@ dependencies = [
     "nbformat",
     "pyarrow",
     "regex",
+    "tqdm",
+    "sqlalchemy"
 ]
 
 requires-python = ">=3.11, <=3.12"
