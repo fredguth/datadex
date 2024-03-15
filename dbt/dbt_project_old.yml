@@ -1,0 +1,176 @@
+name: datadex
+version: 1.0.0
+config-version: 2
+
+profile: default
+
+target-path: target
+
+sources:
+  - name: raw
+    tables:
+    - name: PL_ALIM
+      meta:
+        external_location: "st_read('../data/raw/ALIM_JAN.xlsx')"
+    - name: TB_CENTRO_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO202403130948.csv')"
+    - name: TB_DESPESA
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_202403130952.csv')"
+    - name: TB_TIPO_CENTRO_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_CENTRO_CUSTO_202403130957.csv')"
+    - name: TB_TIPO_PRESTADOR
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_PRESTADOR_202403130956.csv')"
+    - name: TB_TIPO_UNIDADE
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_UNIDADE_202403130955.csv')"
+    - name: TB_PRODUCAO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_PRODUCAO_202403130958.csv')"
+    - name: TB_ITEM_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_CUSTO_202403130959.csv')"
+    - name: TB_ITEM_PRODUCAO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_PRODUCAO_202403131000.csv')"
+    - name: TB_GRUPO_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_GRUPO_CUSTO_202403131001.csv')"
+    - name: TB_MAPAREL_PRODUCAO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_MAPAREL_PRODUCAO_202403131002.csv')"
+    - name: TB_CRITERIO_RATEIO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_CRITERIO_RATEIO_202403131004.csv')"
+    - name: TB_UNIDADE_CENTRO_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_UNIDADE_CENTRO_CUSTO_202403131003.csv')"
+    - name: TB_DESPESA_CENTRO_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_CENTRO_CUSTO_202403131004.csv')"
+    - name: TB_MOVIMENTACAO_CUSTO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_MOVIMENTACAO_CUSTO_202403131006.csv')"
+    - name: TB_CENTRO_CUSTO_MOVIMENTACAO
+      meta:
+        external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO_MOVIMENTACAO_202403131006.csv')"
+        
+models:
+  - name: raw
+    schema: raw
+    +docs:
+      node_color: 'silver'
+    tables:
+      - name: TB_CENTRO_CUSTO_MOVIMENTACAO
+        columns:
+          - name: CO_SEQ_CENTROCUSTO_MOV
+          - name: DT_MOVIMENTACAO
+          - name: CO_CENTRO_CUSTO_PROD
+          - name: CO_CENTRO_CUSTO_REC
+          - name: VL_MATRIZ
+          - name: TP_MATRIZ
+          - name: CO_TIPO_CENTRO_CUSTO_PROD
+          - name: CO_TIPO_CENTRO_CUSTO_REC
+      - name: TB_CRITERIO_RATEIO
+        columns:
+          - name: CO_SEQ_CRITERIO_RATEIO
+          - name: CO_UNIDADE_MEDIDA
+          - name: NO_CRITERIO_RATEIO
+          - name: SG_CRITERIO_RATEIO
+          - name: ST_REGISTRO_ATIVO
+      - name: TB_DESPESA
+        columns:
+          - name: CO_SEQ_DESPESA
+          - name: CO_ITEM_CUSTO
+          - name: DT_DESPESA
+          - name: TP_DESPESA
+          - name: CO_CRITERIO_RATEIO
+          - name: VL_DESPESA
+          - name: VL_ENCARGO_DESPESA
+          - name: DT_BLOQUEIO_DESPESA
+          - name: ST_DESPESA
+          - name: CO_CONTRATO_DESPESA
+          - name: CO_UNIDADE_CENTRO_CUSTO
+          - name: VL_PERC_ENCARGO_DESPESA
+          - name: CO_USUARIO
+          - name: ST_REGISTRO_ATIVO
+  datadex:
+    +schema: main
+    +docs:
+      node_color: 'gold'
+    +materialized: table
+      - name: ALOC_REC
+        columns:
+          - name: UF
+          - name: COD_UN
+          - name: NM_P_UN
+          - name: TP_CC
+          - name: TPCC
+          - name: CO_CC
+          - name: NM_CC
+          - name: NM_CC_UN
+          - name: TPCC_T
+          - name: CO_CC_T
+          - name: NM_CC_T
+          - name: VALOR
+          - name: MES
+          - name: ANO
+      - name: CDT
+        columns:
+          - name: UF
+          - name: DT_DESPESA
+          - name: MES
+          - name: ANO
+          - name: COD_UN
+          - name: COD_GC
+          - name: NM_GC
+          - name: COD_TIPO_CC
+          - name: COD_TIPO_CC_1
+          - name: COD_CC
+          - name: NM_CC
+          - name: NM_CC_UN
+          - name: COD_IC
+          - name: NM_IC
+          - name: VL_DESP
+
+      - name: CR_PROD
+        columns:
+          - name: COD_UN
+          - name: CO_TPCC
+          - name: NM_TPCC
+          - name: CO_CC
+          - name: NM_CC
+          - name: CO_IP
+          - name: NM_IP
+          - name: CO_CR
+          - name: NM_CR
+          - name: MES_PROD
+          - name: ANO_PROD
+
+      - name: ESTABELECIMENTOS
+        columns:
+          - name: UF
+          - name: COD_MUN
+          - name: DATA
+          - name: MES_CAD
+          - name: ANO_CAD
+          - name: CNPJ_UN
+          - name: COD_UN
+          - name: NM_UN
+          - name: NM_P_UN
+          - name: TIPO_UN
+          - name: TIPO_PRESTADOR
+          - name: NU_LEITO_ATENDE
+
+      - name: PROD
+        meta:
+          materialized: view
+    
+
+vars:
+  'dbt_date:time_zone': 'America/Sao_Paulo'
+
+require-dbt-version: [">=1.7.0", "<2.0.0"]

@@ -9,6 +9,90 @@ target-path: target
 models:
   datadex:
     +materialized: table
+    +docs:
+      node_color: 'gold'
+    tables:
+      - name: ESTAB
+        columns:
+        - name: UF
+        - name: COD_MUN
+        - name: DATA
+        - name: MES_CAD
+        - name: ANO_CAD
+        - name: CNPJ_UN
+        - name: COD_UN
+        - name: NM_UN
+        - name: NM_P_UN
+        - name: TIPO_UN
+        - name: TIPO_PRESTADOR
+        - name: NU_LEITO_ATENDE
+      - name: CDT
+        columns:
+        - name: UF
+        - name: DT_DESPESA
+        - name: MES
+        - name: ANO
+        - name: COD_UN
+        - name: COD_GC
+        - name: NM_GC
+        - name: COD_TIPO_CC
+        - name: COD_TIPO_CC1
+        - name: NM_CC
+        - name: NM_CC_UN
+        - name: COD_IC
+        - name: NM_IC
+        - name: VL_DESP
+
+    staging:
+      materialized: table
+      tables:
+        - name: TB_GRUPO_CUSTO
+        - name: TB_ITEM_CUSTO
+        - name: TB_ITEM_PRODUCAO
+        - name: TB_MARAPEL_PRODUCAO
+        - name: TB_PRODUCAO
+        - name: TB_TIPO_CENTRO_CUSTO
+        - name: TB_TIPO_PRESTADOR
+        - name: TB_TIPO_UNIDADE
+        - name: TB_UNIDADE_CENTRO_CUSTO
+        - name: TB_CENTRO_CUSTO
+        - name: TB_CENTRO_CUSTO_MOVIMENTACAO
+          columns:
+            - name: CO_SEQ_CENTROCUSTO_MOV
+            - name: DT_MOVIMENTACAO
+            - name: CO_CENTRO_CUSTO_PROD
+            - name: CO_CENTRO_CUSTO_REC
+            - name: VL_MATRIZ
+            - name: TP_MATRIZ
+            - name: CO_TIPO_CENTRO_CUSTO_PROD
+            - name: CO_TIPO_CENTRO_CUSTO_REC
+        - name: TB_CRITERIO_RATEIO
+          columns:
+            - name: CO_SEQ_CRITERIO_RATEIO
+            - name: CO_UNIDADE_MEDIDA
+            - name: NO_CRITERIO_RATEIO
+            - name: SG_CRITERIO_RATEIO
+            - name: ST_REGISTRO_ATIVO
+        - name: TB_DESPESA
+          columns:
+            - name: CO_SEQ_DESPESA
+            - name: CO_ITEM_CUSTO
+            - name: DT_DESPESA
+            - name: TP_DESPESA
+            - name: CO_CRITERIO_RATEIO
+            - name: VL_DESPESA
+            - name: VL_ENCARGO_DESPESA
+            - name: DT_BLOQUEIO_DESPESA
+            - name: ST_DESPESA
+            - name: CO_CONTRATO_DESPESA
+            - name: CO_UNIDADE_CENTRO_CUSTO
+            - name: VL_PERC_ENCARGO_DESPESA
+            - name: CO_USUARIO
+            - name: ST_REGISTRO_ATIVO
+      +docs:
+        node_color: 'silver'
+
+
 
 vars:
   'dbt_date:time_zone': 'America/Sao_Paulo'
