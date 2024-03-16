@@ -11,6 +11,12 @@ default:
       settings:
         enable_object_cache: true
         enable_http_metadata_cache: true
+      plugins:
+        - module: excel
+          config: 
+            engine: "openpyxl"
+            file: "/tmp/excel_file_out.xlsx"
+            lazy_close: False
   target: dev
 
 config:

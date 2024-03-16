@@ -30,21 +30,24 @@ UNIDADES AS (
 UNIDADES_BASE AS (
 from UNIDADES as a left join BASE as b on a.COD_UN=b."COD UN"::BIGINT 
     select 
-        a.REGIAO,
-        a.UF,
-        b."UF NOME" AS ESTADO, 
-        a.MUNICIPIO,
-        b.GESTORA,
-        b.UNIVERSIDADE,
+        a.COD_UN,
+        a.NM_P_UN AS NOME_FANTASIA,
         a.TIPO_UN,
         b.CNES,
+        a.MUNICIPIO,
+        b.GESTORA AS ENT_GESTORA,
+        b.UNIVERSIDADE AS ENT_GESTORA_UNIVERSIDADE,
         b.MANTENEDOR,
+        a.REGIAO,
+        a.UF,
+        b."UF NOME" AS UF_NOME, 
         b.APOIADOR,
-        a.COD_UN,
-        a.CNPJ_UN,
-        a.NM_P_UN,
         a.NU_LEITO_ATENDE AS NU_LEITOS,
         CAST(a.DATA AS DATE) as DT_CADASTRO
 )
 
-select a.*, u.DT_DESPESA AS DT_ULT_ALIM from UNIDADES_BASE as a left join {{ref('ULT_ALIM')}} as u on COD_UN=CO_UNIDADE_CENTRO_CUSTO order by APOIADOR, UF
+select 
+    a.*, u.DT_DESPESA AS DT_ULT_ALIM 
+    from UNIDADES_BASE as a 
+    left join {{ref('ULT_ALIM')}} as u on COD_UN=CO_UNIDADE_CENTRO_CUSTO 
+    order by APOIADOR NULLS FIRST, UF, MUNICIPIO, DT_CADASTRO desc
