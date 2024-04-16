@@ -2,6 +2,21 @@ version: 2
 
 sources:
 
+    - name: upstream
+      description: The upstream SQLite database we are reading our source data from using DuckDB's general awesomeness
+      schema: main
+      config:
+        plugin: sqlalchemy
+      tables:
+        - name: raw_customers
+          config:
+            table: raw_customers
+        - name: raw_orders
+          config:
+            table: raw_orders
+        - name: raw_payments
+          config:
+            table: raw_payments
     - name: raw
       tables:
         - name: PL_ALIM
@@ -9,49 +24,64 @@ sources:
             external_location: "st_read('../data/raw/ALIM_JAN.xlsx')"
         - name: TB_CENTRO_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO202403130948.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO202403130948.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_DESPESA
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_202403130952.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_202403130952.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_TIPO_CENTRO_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_CENTRO_CUSTO_202403130957.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_CENTRO_CUSTO_202403130957.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_CENTRO_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_TIPO_PRESTADOR
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_PRESTADOR_202403130956.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_PRESTADOR_202403130956.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_PRESTADOR_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_TIPO_UNIDADE
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_UNIDADE_202403130955.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_UNIDADE_202403130955.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_TIPO_UNIDADE_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_PRODUCAO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_PRODUCAO_202403130958.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_PRODUCAO_202403130958.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_PRODUCAO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_ITEM_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_CUSTO_202403130959.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_CUSTO_202403130959.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_ITEM_PRODUCAO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_PRODUCAO_202403131000.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_PRODUCAO_202403131000.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_ITEM_PRODUCAO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_GRUPO_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_GRUPO_CUSTO_202403131001.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_GRUPO_CUSTO_202403131001.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_GRUPO_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_MAPAREL_PRODUCAO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_MAPAREL_PRODUCAO_202403131002.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_MAPAREL_PRODUCAO_202403131002.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_MAPAREL_PRODUCAO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_CRITERIO_RATEIO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_CRITERIO_RATEIO_202403131004.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_CRITERIO_RATEIO_202403131004.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_CRITERIO_RATEIO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_UNIDADE_CENTRO_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_UNIDADE_CENTRO_CUSTO_202403131003.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_UNIDADE_CENTRO_CUSTO_202403131003.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_UNIDADE_CENTRO_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_DESPESA_CENTRO_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_CENTRO_CUSTO_202403131004.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_CENTRO_CUSTO_202403131004.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_DESPESA_CENTRO_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_MOVIMENTACAO_CUSTO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_MOVIMENTACAO_CUSTO_202403131006.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_MOVIMENTACAO_CUSTO_202403131006.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_MOVIMENTACAO_CUSTO_2024-04-01.csv', AUTO_DETECT=TRUE)"
         - name: TB_CENTRO_CUSTO_MOVIMENTACAO
           meta:
-            external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO_MOVIMENTACAO_202403131006.csv')"
+            # external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO_MOVIMENTACAO_202403131006.csv')"
+            external_location: "read_csv('../data/raw/APURASUS_TB_CENTRO_CUSTO_MOVIMENTACAO_2024-04-01.csv', AUTO_DETECT=TRUE)"
           
 
             

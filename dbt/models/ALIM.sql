@@ -1,3 +1,4 @@
+
 WITH BASE AS 
 (
     SELECT 
@@ -11,7 +12,7 @@ IBGE AS (
         SUBSTRING(CAST(COD_MUN AS VARCHAR), 1, 6) AS COD_IBGE_SHORT, 
         Nome_Municipio AS MUNICIPIO,
         Sigla_Reg
-    FROM read_csv('../data/raw/IBGE.csv')
+    FROM read_csv('../data/raw/IBGE.csv', AUTO_DETECT=TRUE)
 ),
 UNIDADES AS (
     SELECT 
@@ -47,7 +48,7 @@ from UNIDADES as a left join BASE as b on a.COD_UN=b."COD UN"::BIGINT
 )
 
 select 
-    a.*, u.DT_DESPESA AS DT_ULT_ALIM 
+    a.*, CAST(u.DT_DESPESA AS DATE) AS DT_ULT_ALIM 
     from UNIDADES_BASE as a 
     left join {{ref('ULT_ALIM')}} as u on COD_UN=CO_UNIDADE_CENTRO_CUSTO 
     order by APOIADOR NULLS FIRST, UF, MUNICIPIO, DT_CADASTRO desc

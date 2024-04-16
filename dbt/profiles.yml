@@ -17,8 +17,14 @@ default:
             engine: "openpyxl"
             file: "/tmp/excel_file_out.xlsx"
             lazy_close: False
+        - module: sqlalchemy
+          config:
+            connection_url: "sqlite:///seeds.sqlite3"
+            # oracle+cx_oracle://user:pass@hostname:port[/dbname][?service_name=<service>[&key=value&key=value...]]
+            # engine = create_engine("oracle+cx_oracle://scott:tiger@hostname:port/?service_name=myservice&encoding=UTF-8&nencoding=UTF-8")
   target: dev
 
 config:
   send_anonymous_usage_stats: False
   use_colors: True
+

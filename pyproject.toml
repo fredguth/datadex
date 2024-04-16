@@ -21,7 +21,8 @@ dependencies = [
     "pyarrow",
     "regex",
     "tqdm",
-    "sqlalchemy"
+    "sqlalchemy",
+    "openpyxl"
 ]
 
 requires-python = ">=3.11, <=3.12"
